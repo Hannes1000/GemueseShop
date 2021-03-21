@@ -26,7 +26,7 @@ function UploadProductPage(props) {
         setDescriptionValue(event.currentTarget.value)
     }
     const onAvailableChange = (event) =>{
-        setAvailableValue(event.currentTarget.value)
+        setAvailableValue(!availableValue)
     }
     const updateImages =(newImages) =>{
         //console.log(newImages)
@@ -34,6 +34,7 @@ function UploadProductPage(props) {
     }
     const onSubmit = (event) =>{
         event.preventDefault();
+
         const variables = {
             name: nameValue,
             type: typeValue,
@@ -98,6 +99,7 @@ function UploadProductPage(props) {
                         name="available"
                         onChange={onAvailableChange}
                         value={availableValue}
+                        defaultChecked
                         ></Input>
                     <br></br>
                     <br></br>

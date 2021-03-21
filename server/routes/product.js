@@ -41,4 +41,20 @@ router.post("/uploadProduct", auth, (req, res) => {
     })
 });
 
+router.post("/getProduct", (req, res) => {
+
+    let order = req.body.order ? req.body.order : "desc";
+    let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+    let available = req.body.available; // ? req.body.available : true
+    //console.log(req.body.available)
+
+    Product.find({available: {$eq: available}})
+        .populate("writer")
+        .sort([[sortBy, order]])
+        .exec((err, product) =>{
+            if(err) return res.status(400).json({success: false, err})
+            res.status(200).json({success: true, product})
+        })
+});
+
 module.exports = router;

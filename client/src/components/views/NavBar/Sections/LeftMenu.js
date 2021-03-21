@@ -9,13 +9,23 @@ function LeftMenu(props) {
   
   if (user.userData && !user.userData.isAuth) {
     return (
-      <></>
+      <Menu mode={props.mode}>
+        <Menu.Item key="logout">
+          <a href="/">Home</a>
+        </Menu.Item>
+        <Menu.Item key="view-product">
+          <a href="/product/view">Produkte</a>
+        </Menu.Item>
+      </Menu>
     )
   } else if(user.userData && user.userData.role == 1){
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="home-admin">
           <a href="/">Home-Admin</a>
+        </Menu.Item>
+        <Menu.Item key="view-product">
+          <a href="/product/view">Produkte</a>
         </Menu.Item>
         <Menu.Item key="add-product">
           <a href="/product/add">Produkt-Hinzufügen</a>
@@ -27,6 +37,9 @@ function LeftMenu(props) {
       <Menu mode={props.mode}>
         <Menu.Item key="logout">
           <a href="/">Home</a>
+        </Menu.Item>
+        <Menu.Item key="view-product">
+          <a href="/product/view">Produkte</a>
         </Menu.Item>
       </Menu>
     )
