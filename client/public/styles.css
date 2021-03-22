@@ -111,7 +111,7 @@ body {
 	height:50.85327911376953px;
 	position:absolute;
 	left:158px;
-	top:3px;
+	top:0px;
 	font-family:Roboto;
 	text-align:center;
 	font-size:36px;
@@ -147,7 +147,7 @@ body {
 	height:21px;
 	position:absolute;
 	left:1321px;
-	top:5px;
+	top:10px;
 	font-family:Roboto;
 	text-align:left;
 	font-size:24px;
@@ -165,9 +165,10 @@ body {
 	background-color:rgba(39.11699719727039, 125.37500202655792, 25.074998885393143, 1);
 	width:138px;
 	height:47px;
+	opacity: 1;
 	position:absolute;
 	left:0px;
-	top:0px;
+	top:9px;
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
 	border-bottom-left-radius:5px;
@@ -179,7 +180,7 @@ body {
 	height:23px;
 	position:absolute;
 	left:4px;
-	top:13px;
+	top:21.5px;
 	font-family:Roboto;
 	text-align:center;
 	font-size:18px;
@@ -197,7 +198,7 @@ body {
 	height:34.72340393066406px;
 	position:absolute;
 	left:0px;
-	top:0px;
+	top:15px;
 }
 .e25_2 { 
 	width:36.96735382080078px;
@@ -284,7 +285,7 @@ body {
 	left:0px;
 	top:0px;
 	background-image:url(images/verschiedenes_obst_und_gem_se_1_1.png);
-	opacity: 0.3;
+	opacity: 0.5;
 	background-repeat:no-repeat;
 	background-size:cover;
 }
@@ -300,6 +301,8 @@ body {
 	background-color:rgba(39.11699719727039, 125.37500202655792, 25.074998885393143, 1);
 	width:373px;
 	height:65px;
+	opacity: 0.8;
+
 	position:absolute;
 	left:0px;
 	top:44px;
