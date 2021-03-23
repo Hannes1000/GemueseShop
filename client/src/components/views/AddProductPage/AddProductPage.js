@@ -12,6 +12,7 @@ const { TextArea } = Input
 function UploadProductPage(props) {
     const [nameValue, setNameValue] = useState("")
     const [typeValue, setTypeValue] = useState("")
+    const [priceValue, setPriceValue] = useState(0)
     const [descriptionValue, setDescriptionValue] = useState("")
     const [availableValue, setAvailableValue] = useState(true)
     const [images, setImages] = useState([])
@@ -27,6 +28,9 @@ function UploadProductPage(props) {
     }
     const onAvailableChange = (event) =>{
         setAvailableValue(!availableValue)
+    }
+    const onPriceChange = (event) =>{
+        setPriceValue(event.currentTarget.value)
     }
     const updateImages =(newImages) =>{
         //console.log(newImages)
@@ -80,6 +84,13 @@ function UploadProductPage(props) {
                         value={typeValue}
                         type="text">
 
+                    </Input>
+                    <br></br>
+                    <label>Preis</label>
+                    <Input 
+                        onChange={onPriceChange}
+                        value={priceValue}
+                        type="number">
                     </Input>
                     <br></br>
                     <label>Beschreibung</label>

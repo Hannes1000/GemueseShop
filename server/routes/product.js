@@ -48,7 +48,9 @@ router.post("/getProduct", (req, res) => {
     let available = req.body.available; // ? req.body.available : true
     //console.log(req.body.available)
 
-    Product.find({available: {$eq: available}})
+    let findArgs = req.body.available ? {available: {$eq: available}} : {};
+
+    Product.find(findArgs)
         .populate("writer")
         .sort([[sortBy, order]])
         .exec((err, product) =>{

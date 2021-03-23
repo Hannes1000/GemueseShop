@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import Axios from "axios";
-import "./ProductViewPage.css"
-import { Card, Col, Row, Input, Button } from 'antd';
+import "./ProductEditPage.css"
+import { Card, Col, Row, Input, Button, Switch } from 'antd';
 import ImageSlider from "../../utils/ImageSlider"
 import CheckboxFilter from './Sections/CheckboxFilter';
+import { Link } from 'react-router-dom';
 const {Meta} = Card;
 
-function ProductViewPage() {
+function ProductEditPage() {
 
     const [products, setProducts] = useState([])
     const [availableValue, setAvailableValue] = useState(true)
@@ -48,22 +49,39 @@ function ProductViewPage() {
         console.log("hi")
     }
 
+    const gridStyle = {
+        display: "flex",
+        flexDirection: "row",
+        width: '100',
+        textAlign: 'center',
+    };
+
+    const onSwitchAvailable =(index)=>{
+        //console.log(event.currentTarget.value)
+        console.log(index)
+        console.log(products[index].available)
+        products[index].available = !products[index].available
+        console.log(products[index].available)
+    }
+
     //lg = largeSize; md = mediumSize; xs = smallSize
     const renderCards = products.map((product, index)=>{
         return <Col lg={6} md={8} xs={24} key={index}>
             <Card
-                onClick={onCardClick}
                 hoverable={true}
-                cover={<ImageSlider images={product.images} />}
+                cover={<Link to={"/edit/" + product._id}><ImageSlider images={product.images} /> </Link>}
                 bordered={true}
-                style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px"} :{border:"5px solid red", borderRadius:"10px"}}
+                style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px", width:"100%"} :{border:"5px solid red", borderRadius:"10px"}}
             >
-                <Meta
-                    title={product.name}
-                    // description={product.description}
-                >
-
-                </Meta>
+                <div style={{display:"flex", flexDirection:"row"}}>
+                    <Meta
+                        title={product.name}
+                        // description={product.description}
+                    >
+                    </Meta>
+                    
+                    <Switch style={{position:"absolute", right:"10px"}} defaultChecked={products[index].available} onChange={() => onSwitchAvailable(index)} />
+                </div>
             </Card>
         </Col>
     })
@@ -116,4 +134,4 @@ function ProductViewPage() {
     )
 }
 
-export default ProductViewPage
+export default ProductEditPage

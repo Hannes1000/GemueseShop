@@ -22,13 +22,16 @@ function LeftMenu(props) {
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="home-admin">
-          <a href="/">Home-Admin</a>
+          <a href="/">Home</a>
         </Menu.Item>
         <Menu.Item key="view-product">
           <a href="/product/view">Produkte</a>
         </Menu.Item>
         <Menu.Item key="add-product">
           <a href="/product/add">Produkt-Hinzufügen</a>
+        </Menu.Item>
+        <Menu.Item key="edit-product">
+          <a href="/product/edit">Produkt-Bearbeiten</a>
         </Menu.Item>
       </Menu>
     )
