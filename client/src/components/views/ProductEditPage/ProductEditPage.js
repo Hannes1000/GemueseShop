@@ -60,18 +60,18 @@ function UploadProductPage(props) {
     }
 
     useEffect(() =>{
-        Axios.get('/api/product/' + this.props.match.params.id)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    description: response.data.description,
-                    duration: response.data.duration,
-                    data: new Date(response.data.date)
-                });
-            })
-            .catch(function(error){
-                console.log(error);
-            })
+        // Axios.get('/api/product/' + this.props.match.params.id)
+        //     .then(response => {
+        //         this.setState({
+        //             username: response.data.username,
+        //             description: response.data.description,
+        //             duration: response.data.duration,
+        //             data: new Date(response.data.date)
+        //         });
+        //     })
+        //     .catch(function(error){
+        //         console.log(error);
+        //     })
     }, [])
 
 
