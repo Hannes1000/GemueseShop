@@ -20,7 +20,7 @@ function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
       <NavBar />
-      <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
+      <div>
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, false)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/product/edit/:id" component={Auth(ProductEditPage, true, true)} />
         </Switch>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Suspense>
   );
 }
