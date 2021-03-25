@@ -12,7 +12,7 @@ const { TextArea } = Input
 function UploadProductPage(props) {
     const [nameValue, setNameValue] = useState("")
     const [typeValue, setTypeValue] = useState("")
-    const [priceValue, setPriceValue] = useState(0)
+    const [priceValue, setPriceValue] = useState("")
     const [descriptionValue, setDescriptionValue] = useState("")
     const [availableValue, setAvailableValue] = useState(true)
     const [images, setImages] = useState([])
@@ -45,6 +45,7 @@ function UploadProductPage(props) {
             description: descriptionValue,
             available: availableValue,
             images: images,
+            price: priceValue
         }
 
         Axios.post("/api/product/uploadProduct", variables)
@@ -70,19 +71,22 @@ function UploadProductPage(props) {
                     <FileUpload refreshFunction={updateImages}></FileUpload>
                     <br></br>
                     <br></br>
-                    <label>Gemüse Name</label>
+                    <label>Gemüse Name [max. 25 Buchstaben]</label>
                     <Input 
                         onChange={onNameChange}
                         value={nameValue}
-                        type="text">
+                        type="text"
+                        maxLength="25"
+                        >
                         
                     </Input>
                     <br></br>
-                    <label>Gemüse Art</label>
+                    <label>Gemüse Art [max. 25 Buchstaben]</label>
                     <Input 
                         onChange={onTypeChange}
                         value={typeValue}
-                        type="text">
+                        type="text"
+                        maxLength="25">
 
                     </Input>
                     <br></br>
@@ -90,7 +94,10 @@ function UploadProductPage(props) {
                     <Input 
                         onChange={onPriceChange}
                         value={priceValue}
-                        type="number">
+                        type="Number" 
+                        pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" 
+                        data-type="currency">
+                        
                     </Input>
                     <br></br>
                     <label>Beschreibung</label>
@@ -106,6 +113,7 @@ function UploadProductPage(props) {
                     <label>Vorhanden</label>
                     <br></br>
                     <Input 
+                        style={{width:"30px", height:"30px"}}
                         type="checkbox" 
                         name="available"
                         onChange={onAvailableChange}

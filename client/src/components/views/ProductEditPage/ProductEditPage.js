@@ -1,137 +1,151 @@
-import React, {useEffect, useState} from 'react'
-import Axios from "axios";
+import React, { useState, useEffect } from 'react'
 import "./ProductEditPage.css"
-import { Card, Col, Row, Input, Button, Switch } from 'antd';
-import ImageSlider from "../../utils/ImageSlider"
-import CheckboxFilter from './Sections/CheckboxFilter';
-import { Link } from 'react-router-dom';
-const {Meta} = Card;
+import {Typography, Button, Form, Message, Input, Icon} from "antd";
+import FileUpload from "../../utils/FileUpload"
+import { string } from 'yup';
+import Axios from 'axios';
+import { PromiseProvider } from 'mongoose';
 
-function ProductEditPage() {
+const { Title } = Typography
+const { TextArea } = Input
 
-    const [products, setProducts] = useState([])
+function UploadProductPage(props) {
+    const [nameValue, setNameValue] = useState("")
+    const [typeValue, setTypeValue] = useState("")
+    const [priceValue, setPriceValue] = useState("")
+    const [descriptionValue, setDescriptionValue] = useState("")
     const [availableValue, setAvailableValue] = useState(true)
+    const [images, setImages] = useState([])
 
-    useEffect(() =>{
+    const onNameChange = (event) =>{
+        setNameValue(event.currentTarget.value)
+    }
+    const onTypeChange = (event) =>{
+        setTypeValue(event.currentTarget.value)
+    }
+    const onDescriptionChange = (event) =>{
+        setDescriptionValue(event.currentTarget.value)
+    }
+    const onAvailableChange = (event) =>{
+        setAvailableValue(!availableValue)
+    }
+    const onPriceChange = (event) =>{
+        setPriceValue(event.currentTarget.value)
+    }
+    const updateImages =(newImages) =>{
+        //console.log(newImages)
+        setImages(newImages)
+    }
+    const onSubmit = (event) =>{
+        event.preventDefault();
+
         const variables = {
-            available: availableValue
+            name: nameValue,
+            type: typeValue,
+            description: descriptionValue,
+            available: availableValue,
+            images: images,
+            price: priceValue
         }
-        getProducts(variables);
-    }, [])
 
-    const getProducts = (variables) => {
-        Axios.post("/api/product/getProduct", variables)
+        Axios.post("/api/product/uploadProduct", variables)
         .then(response =>{
             if(response.data.success){
-                setProducts(response.data.product)
-                //console.log(response.data.product)
+                //alert("product uploaded")
+                props.history.push("/")
             }else{
-                alert("Failed to fetch product data")
+                alert("Failed to upload Product")
             }
         })
     }
 
-    const onAvailableChange = () =>{
-        setAvailableValue(!availableValue);
-        const variables = {
-            available: !availableValue
-        }
-        getProducts(variables);
-    }
+    useEffect(() =>{
+        Axios.get('/api/product/' + this.props.match.params.id)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    description: response.data.description,
+                    duration: response.data.duration,
+                    data: new Date(response.data.date)
+                });
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+    }, [])
 
-    const handleFilters =(filters, category)=>{
-        if(category === "available"){
-            onAvailableChange();
-        }
-    }
 
-    const onCardClick =() =>{
-        console.log("hi")
-    }
-
-    const gridStyle = {
-        display: "flex",
-        flexDirection: "row",
-        width: '100',
-        textAlign: 'center',
-    };
-
-    const onSwitchAvailable =(index)=>{
-        //console.log(event.currentTarget.value)
-        console.log(index)
-        console.log(products[index].available)
-        products[index].available = !products[index].available
-        console.log(products[index].available)
-    }
-
-    //lg = largeSize; md = mediumSize; xs = smallSize
-    const renderCards = products.map((product, index)=>{
-        return <Col lg={6} md={8} xs={24} key={index}>
-            <Card
-                hoverable={true}
-                cover={<Link to={"/edit/" + product._id}><ImageSlider images={product.images} /> </Link>}
-                bordered={true}
-                style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px", width:"100%"} :{border:"5px solid red", borderRadius:"10px"}}
-            >
-                <div style={{display:"flex", flexDirection:"row"}}>
-                    <Meta
-                        title={product.name}
-                        // description={product.description}
-                    >
-                    </Meta>
-                    
-                    <Switch style={{position:"absolute", right:"10px"}} defaultChecked={products[index].available} onChange={() => onSwitchAvailable(index)} />
-                </div>
-            </Card>
-        </Col>
-    })
 
     return (
-        <div className="div-main-title">
-            <div className="div-head">
-                <div className="div-title">
-                    <h2>Unsere Produkte</h2>
+        <div>
+            <div style={{maxWidth: '700px', margin:'2rem auto'}}>
+                <div style={{textAlign:'center', marginBottom:'2rem'}}>
+                    <Title level={2}>Produkt bearbeiten</Title>
                 </div>
+                <Form className="form-input" onSubmit={onSubmit}>
+
+                    <FileUpload refreshFunction={updateImages}></FileUpload>
+                    <br></br>
+                    <br></br>
+                    <label>Gemüse Name [max. 25 Buchstaben]</label>
+                    <Input 
+                        onChange={onNameChange}
+                        value={nameValue}
+                        type="text"
+                        maxLength="25"
+                        >
+                        
+                    </Input>
+                    <br></br>
+                    <label>Gemüse Art [max. 25 Buchstaben]</label>
+                    <Input 
+                        onChange={onTypeChange}
+                        value={typeValue}
+                        type="text"
+                        maxLength="25">
+
+                    </Input>
+                    <br></br>
+                    <label>Preis</label>
+                    <Input 
+                        onChange={onPriceChange}
+                        value={priceValue}
+                        type="Number" 
+                        pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" 
+                        data-type="currency">
+                        
+                    </Input>
+                    <br></br>
+                    <label>Beschreibung</label>
+                    <TextArea
+                        onChange={onDescriptionChange}
+                        value={descriptionValue}
+                        rows="5"
+                        >
+
+                    </TextArea>
+                    <br></br>
+                    <br></br>
+                    <label>Vorhanden</label>
+                    <br></br>
+                    <Input 
+                        style={{width:"30px", height:"30px"}}
+                        type="checkbox" 
+                        name="available"
+                        onChange={onAvailableChange}
+                        value={availableValue}
+                        defaultChecked
+                        ></Input>
+                    <br></br>
+                    <br></br>
+                    <Button
+                        onClick={onSubmit}>
+                        Hinzufügen
+                    </Button>
+                </Form>
             </div>
-
-
-            {/* Filter  */}
-            <CheckboxFilter
-                handleFilters={filters => handleFilters(filters, "available")}    
-            >
-
-            </CheckboxFilter>
-            {/* <div>
-                <label>vorhanden</label>
-                <Input
-                    type="checkbox" 
-                    name="available"
-                    onChange={onAvailableChange}
-                    value={availableValue}
-                    defaultChecked
-                >
-                </Input>
-            </div> */}
-
-            {/* Search  */}
-
-
-            {products.length === 0 ?
-                <div className="div-no-products">
-                    <h2>Produkte werden geladen....</h2>
-                </div> :
-                <div>
-                    <Row gutter={[16,16]}>
-                        {renderCards}
-                    </Row>
-
-                </div>
-            }
-            <br /><br />
-
-
         </div>
     )
 }
 
-export default ProductEditPage
+export default UploadProductPage

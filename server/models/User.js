@@ -14,6 +14,10 @@ const userSchema = mongoose.Schema({
         trim:true,
         unique: 1 
     },
+    telephone: {
+        type:Number,
+        minglength: 10
+    },
     password: {
         type: String,
         minglength: 5

@@ -59,4 +59,24 @@ router.post("/getProduct", (req, res) => {
         })
 });
 
+router.post("/editProduct/available/:id", (req, res) => {
+    //console.log(req.body.availabale)
+    //console.log(req.params.id)
+    Product.findById(req.params.id)
+    .then(product => {
+        product.available = req.body.availabale;
+        product.save((err) =>{
+            if(err) return res.status(400).json({success: false, err})
+            return res.status(200).json({success: true})
+        })
+    })
+});
+
+router.delete("/deleteProduct/:id", (req, res) => {
+    Product.findByIdAndDelete(req.params.id)
+    .then(() => res.json({success: true}))
+    .catch(err => res.status(400).json({success: false, err}));
+});
+
+
 module.exports = router;

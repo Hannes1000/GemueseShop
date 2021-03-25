@@ -50,13 +50,14 @@ function ProductViewPage() {
 
     //lg = largeSize; md = mediumSize; xs = smallSize
     const renderCards = products.map((product, index)=>{
-        return <Col lg={6} md={8} xs={24} key={index}>
+        return <Col lg={6} md={12} xs={24} key={index}>
             <Card
                 onClick={onCardClick}
                 hoverable={true}
                 cover={<ImageSlider images={product.images} />}
                 bordered={true}
-                style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px"} :{border:"5px solid red", borderRadius:"10px"}}
+                style={{border:"5px solid lightgray", borderRadius:"10px"}}
+                // style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px"} :{border:"5px solid red", borderRadius:"10px"}}
             >
                 <Meta
                     title={product.name}

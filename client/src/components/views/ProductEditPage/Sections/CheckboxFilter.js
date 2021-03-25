@@ -5,9 +5,13 @@ const {Panel} = Collapse;
 //in case to add more filters
 const filters = [
     {
-        "_id": 1,
+        "_id": -1,
         "name": "Nur verfügbare Produkte anzeigen"
-    }
+    },
+    // {
+    //     "_id": -1,
+    //     "name": "Preis"
+    // }
 ]
 
 function CheckboxFilter(props) {

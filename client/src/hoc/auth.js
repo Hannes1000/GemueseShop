@@ -18,7 +18,7 @@ export default function (SpecificComponent, option, adminRoute = null) {
                         props.history.push('/login')
                     }
                     //Loggined in Status 
-                } else {
+                } /*else {
                     //supposed to be Admin page, but not admin person wants to go inside
                     if (adminRoute && !response.payload.isAdmin) {
                         props.history.push('/')
@@ -29,7 +29,7 @@ export default function (SpecificComponent, option, adminRoute = null) {
                             props.history.push('/')
                         }
                     }
-                }
+                }*/
             })
 
         }, [])

@@ -43,6 +43,7 @@ function RegisterPage(props) {
         email: '',
         lastName: '',
         name: '',
+        telephone: '',
         password: '',
         confirmPassword: ''
       }}
@@ -54,6 +55,9 @@ function RegisterPage(props) {
         email: Yup.string()
           .email('E-Mail ungültig')
           .required('E-Mail wird benötigt'),
+        telephone: Yup.string()
+          .min(10, 'Telefonnummer muss mind 10 Zeichen lang sein')
+          .required('Telefonnummer wird benötigt'),
         password: Yup.string()
           .min(6, 'Passwort muss mindestens 6 Zeichen lang sein')
           .required('Passwort wird benötigt'),
@@ -68,6 +72,7 @@ function RegisterPage(props) {
             email: values.email,
             password: values.password,
             name: values.name,
+            telephone: values.telephone,
             lastname: values.lastname,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
           };
@@ -149,6 +154,23 @@ function RegisterPage(props) {
                 />
                 {errors.email && touched.email && (
                   <div className="input-feedback">{errors.email}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="Telefonnummer" hasFeedback validateStatus={errors.telephone && touched.telephone ? "error" : 'success'}>
+                <Input
+                  id="telephone"
+                  placeholder="Telefonnummer eingeben"
+                  type="number"
+                  value={values.telephone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.telephone && touched.telephone ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.telephone && touched.telephone && (
+                  <div className="input-feedback">{errors.telephone}</div>
                 )}
               </Form.Item>
 

@@ -9,6 +9,7 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import AddProductPage from "./views/AddProductPage/AddProductPage"
 import ProductViewPage from "./views/ProductViewPage/ProductViewPage"
+import ProductEditAllPage from "./views/ProductEditPage/ProductEditAllPage/ProductEditAllPage"
 import ProductEditPage from "./views/ProductEditPage/ProductEditPage"
 
 //null   Anyone Can go inside
@@ -24,9 +25,9 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, false)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/product/view" component={Auth(ProductViewPage, false)} />
+          <Route exact path="/product/view" component={Auth(ProductViewPage, false, false)} />
           <Route exact path="/product/add" component={Auth(AddProductPage, true, true)} />
-          <Route exact path="/product/edit" component={Auth(ProductEditPage, true, true)} />
+          <Route exact path="/product/edit" component={Auth(ProductEditAllPage, true, true)} />
           <Route exact path="/product/edit/:id" component={Auth(ProductEditPage, true, true)} />
         </Switch>
       </div>
