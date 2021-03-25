@@ -60,18 +60,14 @@ function UploadProductPage(props) {
     }
 
     useEffect(() =>{
-        // Axios.get('/api/product/' + this.props.match.params.id)
-        //     .then(response => {
-        //         this.setState({
-        //             username: response.data.username,
-        //             description: response.data.description,
-        //             duration: response.data.duration,
-        //             data: new Date(response.data.date)
-        //         });
-        //     })
-        //     .catch(function(error){
-        //         console.log(error);
-        //     })
+        Axios.post('/api/product/getProductByID/' + props.match.params.id)
+            .then(response => {
+                if(response.data.success){
+                    console.log(response.data.product)
+                }else{
+                    alert("Failed to load Product")
+                }
+            })
     }, [])
 
 
@@ -92,7 +88,7 @@ function UploadProductPage(props) {
                         onChange={onNameChange}
                         value={nameValue}
                         type="text"
-                        maxLength="25"
+                        maxLength={25}
                         >
                         
                     </Input>
@@ -102,7 +98,7 @@ function UploadProductPage(props) {
                         onChange={onTypeChange}
                         value={typeValue}
                         type="text"
-                        maxLength="25">
+                        maxLength={25}>
 
                     </Input>
                     <br></br>

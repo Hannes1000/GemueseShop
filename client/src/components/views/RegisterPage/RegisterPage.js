@@ -161,7 +161,7 @@ function RegisterPage(props) {
                 <Input
                   id="telephone"
                   placeholder="Telefonnummer eingeben"
-                  type="number"
+                  type="text"
                   value={values.telephone}
                   onChange={handleChange}
                   onBlur={handleBlur}

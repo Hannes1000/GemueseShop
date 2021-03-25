@@ -76,7 +76,7 @@ function UploadProductPage(props) {
                         onChange={onNameChange}
                         value={nameValue}
                         type="text"
-                        maxLength="25"
+                        maxLength={25}
                         >
                         
                     </Input>
@@ -86,7 +86,7 @@ function UploadProductPage(props) {
                         onChange={onTypeChange}
                         value={typeValue}
                         type="text"
-                        maxLength="25">
+                        maxLength={25}>
 
                     </Input>
                     <br></br>
