@@ -79,11 +79,11 @@ function ProductViewPage() {
 
 
             {/* Filter  */}
-            <CheckboxFilter
+            {/* <CheckboxFilter
                 handleFilters={filters => handleFilters(filters, "available")}    
-            >
+            > 
 
-            </CheckboxFilter>
+            </CheckboxFilter>*/}
             {/* <div>
                 <label>vorhanden</label>
                 <Input

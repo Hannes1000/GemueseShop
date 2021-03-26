@@ -14,7 +14,7 @@ var storage = multer.diskStorage({
     },
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname)
-        if (ext !== '.jpg' || ext !== '.png') {
+        if p '.jpg' || ext !== '.png') {
             return cb(res.status(400).end('only jpg, png are allowed'), false);
         }
         cb(null, true)
@@ -43,16 +43,15 @@ router.post("/uploadProduct", auth, (req, res) => {
 
 router.post("/getProduct", (req, res) => {
 
-    let order = req.body.order ? req.body.order : "desc";
-    let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+    let order = req.body.order ? req.body.order : "asc";
+    let sortBy = req.body.sortBy ? req.body.sortBy : "type";
     let available = req.body.available; // ? req.body.available : true
     //console.log(req.body.available)
 
     let findArgs = req.body.available ? {available: {$eq: available}} : {};
 
-    Product.find(findArgs)
-        .populate("writer")
-        .sort([[sortBy, order]])
+    Product.find()
+        .sort({ "type": 1, "name": 1 })
         .exec((err, product) =>{
             if(err) return res.status(400).json({success: false, err})
             res.status(200).json({success: true, product})
@@ -76,27 +75,27 @@ router.post("/getProductByID/:id", auth, (req, res) => {
     //console.log(req.params.id)
     Product.findById(req.params.id)
     .then(product => {
-        console.log(product)
         return res.status(200).json({success: true, product})
     })
     .catch(err => res.status(400).json({success: false, err}));
 });
 
 router.post("/updateProductByID/:id", auth, (req, res) => {
-    //console.log(req.params.id)
     Product.findById(req.params.id)
-    .then((err, product) => {
+    .then(product => {
         product.name = req.body.name;
         product.type = req.body.type;
         product.description = req.body.description;
         product.images = req.body.images;
         product.price = req.body.price;
+        product.available = req.body.available;
 
         product.save((err) =>{
             if(err) return res.status(400).json({success: false, err})
             return res.status(200).json({success: true})
         })
     })
+    .catch(err => res.status(400).json({success: false, err}));
 });
 
 

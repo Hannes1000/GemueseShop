@@ -48,7 +48,7 @@ function UploadProductPage(props) {
             price: priceValue
         }
 
-        Axios.post("/api/product/uploadProduct", variables)
+        Axios.post("/api/product/updateProductByID/" + props.match.params.id, variables)
         .then(response =>{
             if(response.data.success){
                 //alert("product uploaded")
@@ -63,7 +63,12 @@ function UploadProductPage(props) {
         Axios.post('/api/product/getProductByID/' + props.match.params.id)
             .then(response => {
                 if(response.data.success){
-                    console.log(response.data.product)
+                    setNameValue(response.data.product.name);
+                    setAvailableValue(response.data.product.available);
+                    setImages(response.data.product.images);
+                    setDescriptionValue(response.data.product.description);
+                    setPriceValue(response.data.product.price);
+                    setTypeValue(response.data.product.type);
                 }else{
                     alert("Failed to load Product")
                 }
@@ -129,14 +134,13 @@ function UploadProductPage(props) {
                         type="checkbox" 
                         name="available"
                         onChange={onAvailableChange}
-                        value={availableValue}
-                        defaultChecked
+                        checked={availableValue}
                         ></Input>
                     <br></br>
                     <br></br>
                     <Button
                         onClick={onSubmit}>
-                        Hinzufügen
+                        Speichern
                     </Button>
                 </Form>
             </div>

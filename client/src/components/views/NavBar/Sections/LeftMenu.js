@@ -28,10 +28,10 @@ function LeftMenu(props) {
           <a href="/product/view">Produkte</a>
         </Menu.Item>
         <Menu.Item key="add-product">
-          <a href="/product/add">Produkt-Hinzufügen</a>
+          <a href="/product/add">Hinzufügen</a>
         </Menu.Item>
         <Menu.Item key="edit-product">
-          <a href="/product/edit">Produkt-Bearbeiten</a>
+          <a href="/product/edit">Bearbeiten</a>
         </Menu.Item>
       </Menu>
     )
