@@ -44,7 +44,7 @@ router.post("/uploadProduct", auth, (req, res) => {
 router.post("/getProduct", (req, res) => {
 
     let order = req.body.order ? req.body.order : "desc";
-    let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+    let sortBy = req.body.sortBy ? req.body.sortBy : "type";
     let available = req.body.available; // ? req.body.available : true
     //console.log(req.body.available)
 

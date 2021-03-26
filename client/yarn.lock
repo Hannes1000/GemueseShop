@@ -3895,6 +3895,11 @@
     "minimalistic-assert" "^1.0.0"
     "minimalistic-crypto-utils" "^1.0.0"
 
+"emailjs-com@^2.6.4":
+  "integrity" "sha512-4G8rxq+1mbL4rGntMa9tqNJ4N9BhuCl8lFJASDHxZVXeC82ivwL6qw+Zu48cAWHpNK2/F3vScaAZk8zoTAfiAA=="
+  "resolved" "https://registry.npmjs.org/emailjs-com/-/emailjs-com-2.6.4.tgz"
+  "version" "2.6.4"
+
 "emoji-regex@^7.0.1":
   "integrity" "sha512-CwBLREIQ7LvYFB0WyRvwhq5N5qPhc6PMjD6bYggFlI5YyDgl+0vxq5VHbMOFqLg7hfWzmu8T5Z1QofhmTIhItA=="
   "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-7.0.3.tgz"
@@ -4827,11 +4832,6 @@
   "integrity" "sha1-FQStJSMVjKpA20onh8sBQRmU6k8="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
-
-"fsevents@^1.2.7", "fsevents@~2.1.2", "fsevents@2.1.2":
-  "integrity" "sha512-R4wDiBwZ0KzpgOWetKDug1FZcYhqYnUYKtfZYt4mD5SBz76q0KR4Q9o7GIPamsVPGmW3EYPPJ0dOOjvx32ldZA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.1.2.tgz"
-  "version" "2.1.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="

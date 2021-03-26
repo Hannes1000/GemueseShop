@@ -33,6 +33,9 @@ function LeftMenu(props) {
         <Menu.Item key="edit-product">
           <a href="/product/edit">Produkt-Bearbeiten</a>
         </Menu.Item>
+        <Menu.Item key="email-send">
+          <a href="/order">Email Test</a>
+        </Menu.Item>
       </Menu>
     )
   }else {
@@ -43,6 +46,9 @@ function LeftMenu(props) {
         </Menu.Item>
         <Menu.Item key="view-product">
           <a href="/product/view">Produkte</a>
+        </Menu.Item>
+        <Menu.Item key="email-send">
+          <a href="/order">Email Test</a>
         </Menu.Item>
       </Menu>
     )
