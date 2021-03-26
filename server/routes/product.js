@@ -14,7 +14,7 @@ var storage = multer.diskStorage({
     },
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname)
-        if p '.jpg' || ext !== '.png') {
+        if (ext !== '.jpg' || ext !== '.png') {
             return cb(res.status(400).end('only jpg, png are allowed'), false);
         }
         cb(null, true)
@@ -50,15 +50,16 @@ router.post("/getProduct", (req, res) => {
 
     let findArgs = req.body.available ? {available: {$eq: available}} : {};
 
-    Product.find()
-        .sort({ "type": 1, "name": 1 })
+    Product.find(findArgs)
+        .populate("writer")
+        .sort([[sortBy, order]])
         .exec((err, product) =>{
             if(err) return res.status(400).json({success: false, err})
             res.status(200).json({success: true, product})
         })
 });
 
-router.post("/editProduct/available/:id", auth, (req, res) => {
+router.post("/editProduct/available/:id", (req, res) => {
     //console.log(req.body.availabale)
     //console.log(req.params.id)
     Product.findById(req.params.id)
@@ -71,36 +72,7 @@ router.post("/editProduct/available/:id", auth, (req, res) => {
     })
 });
 
-router.post("/getProductByID/:id", auth, (req, res) => {
-    //console.log(req.params.id)
-    Product.findById(req.params.id)
-    .then(product => {
-        return res.status(200).json({success: true, product})
-    })
-    .catch(err => res.status(400).json({success: false, err}));
-});
-
-router.post("/updateProductByID/:id", auth, (req, res) => {
-    Product.findById(req.params.id)
-    .then(product => {
-        product.name = req.body.name;
-        product.type = req.body.type;
-        product.description = req.body.description;
-        product.images = req.body.images;
-        product.price = req.body.price;
-        product.available = req.body.available;
-
-        product.save((err) =>{
-            if(err) return res.status(400).json({success: false, err})
-            return res.status(200).json({success: true})
-        })
-    })
-    .catch(err => res.status(400).json({success: false, err}));
-});
-
-
-
-router.delete("/deleteProduct/:id", auth, (req, res) => {
+router.delete("/deleteProduct/:id", (req, res) => {
     Product.findByIdAndDelete(req.params.id)
     .then(() => res.json({success: true}))
     .catch(err => res.status(400).json({success: false, err}));
