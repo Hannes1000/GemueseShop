@@ -1,0 +1,115 @@
+.startseite{
+    background: url("./Resources/verschiedenes_obst_und_gem_se_1_1.png");
+    position: absolute;
+    top: 0;
+    height: calc(100% + 69px);
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 45%;
+}
+
+#überschrift{
+    position: absolute;
+width: 1000px;
+height: 212px;
+left: 220px;
+top: 150px;
+
+font-family: Arial;
+font-style: normal;
+font-weight: normal;
+font-size: 144px;
+line-height: 212px;
+
+
+/* identical to box height */
+
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+}
+
+
+
+#unterschrift{
+    position: absolute;
+    width: 1083px;
+    height: 72px;
+    left: 220px;
+    top: 400px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+  
+}
+
+
+
+@media (max-width: 767px) {
+    .startseite{
+        background: url("./Resources/verschiedenes_obst_und_gem_se_1_1.png");
+        
+        height: calc(100% + 69px);
+        width: 767px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 45%;
+    }
+
+    #überschrift{
+        position: absolute;
+        width: 500px;
+        height: 212px;
+        left: 100px;
+        top: 150px;
+    
+        font-family: Arial;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 50px;
+        line-height: 212px;
+        /* identical to box height */
+    
+        display: flex;
+        align-items: center;
+    
+        color: #000000;
+    }
+
+    #unterschrift{
+        position: absolute;
+        width: 300px;
+        height: 72px;
+        left: 100px;
+        top: 350px;
+    
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    
+        color: #000000;
+    }
+
+
+
+
+  }

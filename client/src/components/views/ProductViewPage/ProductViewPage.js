@@ -24,12 +24,10 @@ function ProductViewPage() {
         .then(response =>{
             if(response.data.success){
                 setProducts(response.data.product)
-                let arr = []
                 response.data.product.forEach(product => {
                     //console.log(product.available)
-                    arr.push(product.available)
+                    setSelectedValue(oldArray => [...oldArray, false])
                 });
-                setSelectedValue(arr)
             }else{
                 alert("Failed to fetch product data")
             }
@@ -51,11 +49,12 @@ function ProductViewPage() {
     }
 
     const onSelectedSwitch = (index) =>{
-        console.log(index)
+        console.log(selectedValue)
+        //console.log(index)
         let arr = selectedValue;
-        var start_index = 3
+        var start_index = index
         var number_of_elements_to_remove = 1;
-        console.log(arr[index])
+        //console.log(arr[index])
         var replacement;
         if(arr[index] == true){
             replacement = false;
@@ -63,14 +62,14 @@ function ProductViewPage() {
             replacement = true;
         }
         arr.splice(start_index, number_of_elements_to_remove, replacement);
-        console.log(arr)
+        //console.log(arr)
+        setSelectedValue(arr)
         // let arr = []
         // arr = selectedValue
         // console.log(arr)
         // arr.splice(index, 1, !arr.indexOf(index))
         // console.log(arr.indexOf(index))
         // setSelectedValue(arr)
-        
     }
 
 
@@ -81,7 +80,7 @@ function ProductViewPage() {
                 hoverable={true}
                 cover={<ImageSlider images={product.images} />}
                 bordered={true}
-                style={{border:"5px solid lightgray", borderRadius:"10px"}}
+                style={selectedValue[index] ? {border:"5px solid green", borderRadius:"10px"} : {border:"5px solid lightgray", borderRadius:"10px"}}
                 // style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px"} :{border:"5px solid red", borderRadius:"10px"}}
             >
                 <Meta

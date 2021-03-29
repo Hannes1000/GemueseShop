@@ -51,14 +51,19 @@ router.post("/getProduct", (req, res) => {
     let findArgs = req.body.available ? {available: {$eq: available}} : {};
 
     Product.find(findArgs)
+<<<<<<< HEAD
         .sort({ "type": 1, "name": 1 })
+=======
+        .populate("writer")
+        .sort([[sortBy, order]])
+>>>>>>> d9e3a595783da4c792adbbf75b643d12436b3512
         .exec((err, product) =>{
             if(err) return res.status(400).json({success: false, err})
             res.status(200).json({success: true, product})
         })
 });
 
-router.post("/editProduct/available/:id", auth, (req, res) => {
+router.post("/editProduct/available/:id", (req, res) => {
     //console.log(req.body.availabale)
     //console.log(req.params.id)
     Product.findById(req.params.id)
@@ -71,36 +76,7 @@ router.post("/editProduct/available/:id", auth, (req, res) => {
     })
 });
 
-router.post("/getProductByID/:id", auth, (req, res) => {
-    //console.log(req.params.id)
-    Product.findById(req.params.id)
-    .then(product => {
-        return res.status(200).json({success: true, product})
-    })
-    .catch(err => res.status(400).json({success: false, err}));
-});
-
-router.post("/updateProductByID/:id", auth, (req, res) => {
-    Product.findById(req.params.id)
-    .then(product => {
-        product.name = req.body.name;
-        product.type = req.body.type;
-        product.description = req.body.description;
-        product.images = req.body.images;
-        product.price = req.body.price;
-        product.available = req.body.available;
-
-        product.save((err) =>{
-            if(err) return res.status(400).json({success: false, err})
-            return res.status(200).json({success: true})
-        })
-    })
-    .catch(err => res.status(400).json({success: false, err}));
-});
-
-
-
-router.delete("/deleteProduct/:id", auth, (req, res) => {
+router.delete("/deleteProduct/:id", (req, res) => {
     Product.findByIdAndDelete(req.params.id)
     .then(() => res.json({success: true}))
     .catch(err => res.status(400).json({success: false, err}));
