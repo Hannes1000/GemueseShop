@@ -47,6 +47,15 @@ color: #000000;
 
     color: #000000;
 }
+#einkaufen{
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    left: auto;
+    top: 700px;
+
+    background-color: rgba(255, 255, 255, 0.548);
+}
 
 @media (max-width: 767px) {
     .startseite{
@@ -98,4 +107,16 @@ color: #000000;
     
         color: #000000;
     }
+
+    #einkaufen{
+        position: absolute;
+        width: 200px;
+        height: 50px;
+        left: auto;
+        top: 650px;
+
+        background-color: rgba(255, 255, 255, 0.548);
+    }
+
+
   }
