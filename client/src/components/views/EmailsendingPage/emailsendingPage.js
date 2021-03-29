@@ -28,7 +28,7 @@ export default function ContactUs() {
             <input type="text" placeholder="Name" name="from_name" />
           </div>
           <div id="bestellung">
-          <textarea placeholder="Bestellung" name="message" />
+            <textarea placeholder="Bestellung" name="message" />
           </div>
           <div id="submit">
             <input type="submit" value="Send" />
@@ -37,6 +37,5 @@ export default function ContactUs() {
       </div>
       <div id="linie2"></div>
     </div>
-    
   );
 }

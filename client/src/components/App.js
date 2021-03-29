@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/product/add" component={Auth(AddProductPage, true, true)} />
           <Route exact path="/product/edit" component={Auth(ProductEditAllPage, true, true)} />
           <Route exact path="/product/edit/:id" component={Auth(ProductEditPage, true, true)} />
-          <Route exact path="/order" component={Auth(EmailSendingPage, true, false)} />
+          <Route exact path="/order/email/:id" component={Auth(EmailSendingPage, true, false)} />
         </Switch>
       </div>
       {/* <Footer /> */}
