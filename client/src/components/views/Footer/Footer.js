@@ -4,11 +4,10 @@ import {Icon} from 'antd';
 function Footer() {
     return (
         <div style={{
-            height: '80px', display: 'flex',
+            height: '0px', display: 'flex',
             flexDirection: 'column', alignItems: 'center',
             justifyContent: 'center', fontSize:'1rem'
         }}>
-           <p> Footer<Icon type="smile" /></p>
         </div>
     )
 }
