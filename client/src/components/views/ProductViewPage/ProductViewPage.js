@@ -75,32 +75,32 @@ function ProductViewPage() {
 
     //lg = largeSize; md = mediumSize; xs = smallSize
     const renderCards = products.map((product, index)=>{
-        return <Col lg={6} md={12} xs={24} key={index}>
-            <Card
-                hoverable={true}
-                cover={<ImageSlider images={product.images} />}
-                bordered={true}
-                style={selectedValue[index] ? {border:"5px solid green", borderRadius:"10px"} : {border:"5px solid lightgray", borderRadius:"10px"}}
-                // style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px"} :{border:"5px solid red", borderRadius:"10px"}}
-            >
-                <Meta
-                    title={product.name}
-                    // description={product.description}
-                >
+        return <div className="productcard" key={index}>
+                    <div id="productname">
+                        {product.name}
+                    </div>
+                    <div id="productimg">
+                        <ImageSlider images={product.images} />
+                    </div>
+                    <div id="description">
+                        {product.description}
+                    </div>
+                
+                </div>
+            {/* <Card hoverable={true} cover={<ImageSlider images={product.images} />} bordered={true} >
+                <Meta title={product.name} id="productname">
                 </Meta>
-                <p 
-                    className="amount-input"
-                >
-                    Menge: 
+                <Meta title={product.description} id="description">
+                </Meta>
+                <p className="amount-input">
+                    Menge:
                 </p>
-                <Input
-                    placeholder={"Menge Angeben"}
-                >
+                <Input placeholder={"Menge Angeben"}>
                 </Input>
                 <Switch style={{position:"absolute", right:"40px", top: "50px"}} defaultChecked={selectedValue[index]} onChange={()=> onSelectedSwitch(index)} />
-                    
-            </Card>
-        </Col>
+
+            </Card> */}
+        {/* </Col> */}
     })
 
     return (
@@ -115,14 +115,14 @@ function ProductViewPage() {
 
             {/* Filter  */}
             {/* <CheckboxFilter
-                handleFilters={filters => handleFilters(filters, "available")}    
-            > 
+                handleFilters={filters => handleFilters(filters, "available")}
+            >
 
             </CheckboxFilter>*/}
             {/* <div>
                 <label>vorhanden</label>
                 <Input
-                    type="checkbox" 
+                    type="checkbox"
                     name="available"
                     onChange={onAvailableChange}
                     value={availableValue}
@@ -146,7 +146,7 @@ function ProductViewPage() {
             }
             <br /><br />
             <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <Button 
+                <Button
                 onClick={()=>console.log(selectedValue)}>
                     Bestellung Aufgeben
                 </Button>
