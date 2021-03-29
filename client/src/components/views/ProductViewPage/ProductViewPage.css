@@ -10,68 +10,74 @@
     align-items: center;
 }
 
-.div-title{
-    text-align: center;
+.title{
+    text-align: left;
+}
+#linie{
+    position: absolute;
+    width: auto;
+    height: 0px;
+    left: 100px;
+    right:100px;
+    top: 160px;
+
+    border: 3px solid #277D19;
+    border-radius: 10px;
+}
+.div-products{
+    width:100%;
 }
 
 .productcard {
-    width: 250px;
-    height: 300px;
-    background: rgba(39, 125, 25, 0.39);
+    padding:0;
+    width: 300px;
+    height: 380px;
+    background: rgba(39, 125, 25, 0.60);
     margin: 20px;
+}
+.productcard:hover{
+    background: rgba(39, 125, 25, 0.40); 
 }
 
 #productname{
-    position: relative;
-width: 78px;
-height: 24px;
-left: 20px;
-top: 13px;
-
-/* Headline 6 */
-
-font-family: Arial;
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 24px;
-/* identical to box height, or 120% */
-
-letter-spacing: 0.15px;
-
-/* Gray 1 */
-
-color: #333333;
+    position: absolute;
+    width: 78px;
+    height: 24px;
+    left: 20px;
+    top: 13px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #333333;
 }
 
+
+
 #productimg{
-    position: relative;
+    position: absolute;
     left: 0%;
     right: 0%;
-    top: 30px;
+    top: 18.85%;
+    bottom: 30.1%;
 
 }
 
 #description{
-    position: relative;
+    position: absolute;
     width: 308px;
     height: 20px;
     left: 16px;
-    bottom: 83px;
-    
-    /* Body 2 */
-    
+    bottom: 120px;
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
-    
+    text-align: left;
     letter-spacing: 0.25px;
-    
-    /* Gray 1 */
-    
     color: #333333;
 }
 
@@ -79,3 +85,20 @@ color: #333333;
     margin-top: 20px;
     margin-bottom: 0px;
 }
+
+@media (max-width: 767px) {
+   
+    #linie{
+        position: absolute;
+        width: auto;
+        height: 0px;
+        left: 50px;
+        right:50px;
+        top: 160px;
+
+        border: 3px solid #277D19;
+        border-radius: 10px;
+    }
+
+
+  }

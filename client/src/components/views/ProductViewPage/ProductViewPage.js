@@ -107,34 +107,12 @@ function ProductViewPage() {
     return (
         <div className="div-main-title">
             <div className="div-head">
-                <div className="div-title">
+                <div className="title">
                     <h2>Unsere Produkte</h2>
+                    <div id="linie"></div>
                 </div>
             </div>
             <br></br>
-
-
-            {/* Filter  */}
-            {/* <CheckboxFilter
-                handleFilters={filters => handleFilters(filters, "available")}
-            >
-
-            </CheckboxFilter>*/}
-            {/* <div>
-                <label>vorhanden</label>
-                <Input
-                    type="checkbox"
-                    name="available"
-                    onChange={onAvailableChange}
-                    value={availableValue}
-                    defaultChecked
-                >
-                </Input>
-            </div> */}
-
-            {/* Search  */}
-
-
             {products.length === 0 ?
                 <div className="div-no-products">
                     <h2>Produkte werden geladen....</h2>
