@@ -98,7 +98,7 @@ function ProductViewPage() {
                 >
                 </Input>
                 <Switch style={{position:"absolute", right:"40px", top: "50px"}} defaultChecked={selectedValue[index]} onChange={()=> onSelectedSwitch(index)} />
-                    
+
             </Card>
         </Col>
     })
