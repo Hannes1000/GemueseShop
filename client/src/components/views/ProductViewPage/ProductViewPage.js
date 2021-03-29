@@ -49,7 +49,7 @@ function ProductViewPage() {
     }
 
     const onSelectedSwitch = (index) =>{
-        console.log(selectedValue)
+        //console.log(selectedValue)
         //console.log(index)
         let arr = selectedValue;
         var start_index = index

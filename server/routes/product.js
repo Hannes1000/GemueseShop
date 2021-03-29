@@ -51,12 +51,8 @@ router.post("/getProduct", (req, res) => {
     let findArgs = req.body.available ? {available: {$eq: available}} : {};
 
     Product.find(findArgs)
-<<<<<<< HEAD
-        .sort({ "type": 1, "name": 1 })
-=======
         .populate("writer")
         .sort([[sortBy, order]])
->>>>>>> d9e3a595783da4c792adbbf75b643d12436b3512
         .exec((err, product) =>{
             if(err) return res.status(400).json({success: false, err})
             res.status(200).json({success: true, product})
@@ -69,6 +65,33 @@ router.post("/editProduct/available/:id", (req, res) => {
     Product.findById(req.params.id)
     .then(product => {
         product.available = req.body.availabale;
+        product.save((err) =>{
+            if(err) return res.status(400).json({success: false, err})
+            return res.status(200).json({success: true})
+        })
+    })
+});
+
+router.post("/getProductByID/:id", auth, (req, res) => {
+    //console.log(req.params.id)
+    Product.findById(req.params.id)
+    .then(product => {
+        console.log(product)
+        return res.status(200).json({success: true, product})
+    })
+    .catch(err => res.status(400).json({success: false, err}));
+});
+
+router.post("/updateProductByID/:id", auth, (req, res) => {
+    //console.log(req.params.id)
+    Product.findById(req.params.id)
+    .then((err, product) => {
+        product.name = req.body.name;
+        product.type = req.body.type;
+        product.description = req.body.description;
+        product.images = req.body.images;
+        product.price = req.body.price;
+
         product.save((err) =>{
             if(err) return res.status(400).json({success: false, err})
             return res.status(200).json({success: true})
