@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Axios from "axios";
 import "./ProductViewPage.css"
-import { Card, Col, Row, Input, Button, Switch } from 'antd';
+import { Card, Col, Row, Input, Button, Switch} from 'antd';
 import ImageSlider from "../../utils/ImageSlider"
 import CheckboxFilter from './Sections/CheckboxFilter';
 const {Meta} = Card;
@@ -75,7 +75,7 @@ function ProductViewPage() {
 
     //lg = largeSize; md = mediumSize; xs = smallSize
     const renderCards = products.map((product, index)=>{
-        return <div className="productcard" key={index}>
+        return <Button className="productcard" key={index}>
                     <div id="productname">
                         {product.name}
                     </div>
@@ -85,8 +85,7 @@ function ProductViewPage() {
                     <div id="description">
                         {product.description}
                     </div>
-                
-                </div>
+                </Button>
             {/* <Card hoverable={true} cover={<ImageSlider images={product.images} />} bordered={true} >
                 <Meta title={product.name} id="productname">
                 </Meta>
@@ -99,8 +98,10 @@ function ProductViewPage() {
                 </Input>
                 <Switch style={{position:"absolute", right:"40px", top: "50px"}} defaultChecked={selectedValue[index]} onChange={()=> onSelectedSwitch(index)} />
 
+<<<<<<< HEAD
             </Card> */}
         {/* </Col> */}
+
     })
 
     return (
@@ -138,7 +139,7 @@ function ProductViewPage() {
                 <div className="div-no-products">
                     <h2>Produkte werden geladen....</h2>
                 </div> :
-                <div>
+                <div className="div-products">
                     <Row gutter={[16,16]}>
                         {renderCards}
                     </Row>
