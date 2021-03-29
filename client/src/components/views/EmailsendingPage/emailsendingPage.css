@@ -25,8 +25,9 @@
 
 #linie1 {
     position: absolute;
-    width: 1765px;
     height: 0px;
+    width: auto;
+    right:56px;
     left: 56px;
     top: 175px;
 
@@ -35,8 +36,9 @@
 
 #linie2 {
     position: absolute;
-    width: 1765px;
     height: 0px;
+    width: auto;
+    right:56px;
     left: 56px;
     top: 737px;
 
@@ -70,13 +72,14 @@
     position: absolute;
     
     left: 56px;
+    right:56px;
     top: 89px;
 }
 
 #bestellung textarea{
-    min-width:1770px;
+    width: 100%;
     min-height: 450px;
-    max-width: 1770px;
+    max-width: 1800px;
     max-height: 450px;
 }
 
@@ -94,3 +97,71 @@
     background-color: #03DAC5;
     outline: none;
 }
+
+@media (max-width: 767px) {
+
+
+
+    #bestellungtext{
+        position: absolute;
+        width: 300px;
+        height: 70px;
+        left: 56px;
+        top: 89px;
+    
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 71px;
+    
+        color: #000000;
+    
+    }
+
+    #linie1 {
+        position: absolute;
+        height: 0px;
+        width: auto;
+        right:56px;
+        left: 56px;
+        top: 175px;
+    
+        border: 3px solid #277D19;
+    }
+    
+    #linie2 {
+        position: absolute;
+        height: 0px;
+        width: auto;
+        right:56px;
+        left: 56px;
+        top: 737px;
+    
+        border: 3px solid #277D19;
+    }
+
+    #bestellung textarea{
+        min-width: 370px;
+        min-height: 450px;
+        max-width: 370px;
+        max-height: 450px;
+    }
+
+    #submit{
+        position: absolute;
+        
+        left: 65px;
+        top: 630px;
+        right: 65px;
+    }
+    
+    #submit input{
+        border-radius: 28px;
+        width: 370px;
+        height: 50px;
+        background-color: #03DAC5;
+        outline: none;
+    }
+    
+  }
