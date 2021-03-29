@@ -112,12 +112,12 @@ function ProductEditPage() {
                     <p style={{paddingTop:"20px", marginBottom:"0px"}}>
                         {"Preis: " + product.price}
                     </p>
-                    <Button style={{position:"absolute", right:"5px", top: "45px", fontSize:"15px", width:"30px", padding:"0px"}} 
+                    <Button style={{position:"absolute", right:"5px", top: "215px", fontSize:"15px", width:"30px", padding:"0px"}} 
                         onClick={() => onDeleteProduct(products.indexOf(product))}
                     >
                         <Icon type="delete"/>
                     </Button>
-                    <Switch style={{position:"absolute", right:"40px", top: "50px"}} checked={products[products.indexOf(product)].available} onChange={() => onSwitchAvailable(products.indexOf(product)) } />
+                    <Switch style={{position:"absolute", right:"40px", top: "220px"}} checked={products[products.indexOf(product)].available} onChange={() => onSwitchAvailable(products.indexOf(product)) } />
                     
                 </div>
             </Card>
@@ -127,9 +127,11 @@ function ProductEditPage() {
     return (
         <div className="div-main-title">
             <div className="div-head">
+                <div id="linie1" style={{top:"150px"}}></div>
                 <div className="div-title">
                     <h2>Produkte Aktualisieren</h2>
                 </div>
+                
             </div>
 
 

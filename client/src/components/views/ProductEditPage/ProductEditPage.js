@@ -52,7 +52,7 @@ function UploadProductPage(props) {
         .then(response =>{
             if(response.data.success){
                 //alert("product uploaded")
-                props.history.push("/")
+                props.history.push("/product/edit")
             }else{
                 alert("Failed to upload Product")
             }
@@ -79,8 +79,9 @@ function UploadProductPage(props) {
 
     return (
         <div>
-            <div style={{maxWidth: '700px', margin:'2rem auto'}}>
-                <div style={{textAlign:'center', marginBottom:'2rem'}}>
+            <div id="div-form">
+                <div id="linie1" style={{top:"150px"}}></div>
+                <div id="div-title">
                     <Title level={2}>Produkt bearbeiten</Title>
                 </div>
                 <Form className="form-input" onSubmit={onSubmit}>
@@ -118,24 +119,25 @@ function UploadProductPage(props) {
                     </Input>
                     <br></br>
                     <label>Beschreibung</label>
-                    <TextArea
+                    <Input
                         onChange={onDescriptionChange}
                         value={descriptionValue}
                         rows="5"
                         >
 
-                    </TextArea>
+                    </Input>
                     <br></br>
                     <br></br>
-                    <label>Vorhanden</label>
-                    <br></br>
-                    <Input 
-                        style={{width:"30px", height:"30px"}}
-                        type="checkbox" 
-                        name="available"
-                        onChange={onAvailableChange}
-                        checked={availableValue}
+                    <div className="div-checkbox">
+                        <label>Vorhanden</label>
+                        <Input 
+                            style={{width:"30px", height:"30px"}}
+                            type="checkbox" 
+                            name="available"
+                            onChange={onAvailableChange}
+                            checked={availableValue}
                         ></Input>
+                    </div>
                     <br></br>
                     <br></br>
                     <Button

@@ -1,5 +1,36 @@
+#div-form{
+    max-Width: 700px;
+    margin:2rem auto;
+}
+
+#div-title{
+    text-align:center; 
+    margin-bottom:3rem;
+}
+
+
+
 
 .form-input{
     display: flex;
     flex-direction: column;
 }
+
+.div-checkbox{
+    display: flex;
+    align-content: center;
+}
+
+.div-checkbox label{
+    padding-right: 30px;
+}
+
+
+@media (max-width: 767px) {
+    
+    #div-form{
+        max-Width: 400px;
+        margin:2rem auto;
+    }
+    
+  }
