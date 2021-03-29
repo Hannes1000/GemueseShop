@@ -32,20 +32,20 @@ color: #000000;
 
 #unterschrift{
     position: absolute;
-width: 1083px;
-height: 72px;
-left: 225px;
-top: 468px;
+    width: 1083px;
+    height: 72px;
+    left: 225px;
+    top: 468px;
 
-font-family: Arial, Helvetica, sans-serif;
-font-style: normal;
-font-weight: normal;
-font-size: 36px;
-line-height: 36px;
-display: flex;
-align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
 
-color: #000000;
+    color: #000000;
 }
 
 @media (max-width: 767px) {
@@ -62,21 +62,40 @@ color: #000000;
 
     #überschrift{
         position: absolute;
-    width: 1000px;
-    height: 212px;
-    left: 90px;
-    top: 200px;
+        width: 1000px;
+        height: 212px;
+        left: 100px;
+        top: 150px;
     
-    font-family: Arial;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 50px;
-    line-height: 212px;
-    /* identical to box height */
+        font-family: Arial;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 50px;
+        line-height: 212px;
+        /* identical to box height */
     
-    display: flex;
-    align-items: center;
+        display: flex;
+        align-items: center;
     
-    color: #000000;
+        color: #000000;
+    }
+
+    #unterschrift{
+        position: absolute;
+        width: 300px;
+        height: 72px;
+        left: 100px;
+        top: 400px;
+    
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    
+        color: #000000;
     }
   }

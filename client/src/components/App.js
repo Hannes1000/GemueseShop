@@ -33,7 +33,7 @@ function App() {
           <Route exact path="/order" component={Auth(EmailSendingPage, true, false)} />
         </Switch>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Suspense>
   );
 }
