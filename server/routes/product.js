@@ -87,7 +87,6 @@ router.post("/updateProductByID/:id", auth, (req, res) => {
     //console.log(req.body)
     Product.findById(req.params.id)
     .then(product => {
-        //console.log(product)
         product.name = req.body.name;
         product.type = req.body.type;
         product.description = req.body.description;

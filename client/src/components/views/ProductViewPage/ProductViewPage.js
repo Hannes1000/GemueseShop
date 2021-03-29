@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Axios from "axios";
 import "./ProductViewPage.css"
-import { Card, Col, Row, Input, Button, Switch } from 'antd';
+import { Card, Col, Row, Input, Button, Switch} from 'antd';
+import Popup from 'reactjs-popup';
 import ImageSlider from "../../utils/ImageSlider"
 import CheckboxFilter from './Sections/CheckboxFilter';
 const {Meta} = Card;
@@ -128,24 +129,35 @@ function ProductViewPage(props) {
 
     //lg = largeSize; md = mediumSize; xs = smallSize
     const renderCards = products.map((product, index)=>{
-        return <Col lg={6} md={12} xs={24} key={index}>
-            <Card
-                hoverable={true}
-                cover={<ImageSlider images={product.images} />}
-                bordered={true}
-                style={(selectedValue[index] == true) ? {border:"5px solid green", borderRadius:"10px"} : {border:"5px solid lightgray", borderRadius:"10px"}}
-                // style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px"} :{border:"5px solid red", borderRadius:"10px"}}
-            >
-                <Meta
-                    title={product.name}
-                    // description={product.description}
-                >
+
+        return <Button className="productcard" key={index}>
+                    <div id="productname">
+                        {product.name}
+                    </div>
+                    <Switch style={{position:"absolute", right:"10px", top: "10px"}} defaultChecked={(selectedValue[index] == true)} onChange={()=> onSelectedSwitch(index)} />
+                    <div id="description">
+                        {product.description}
+                    </div>
+                    <div id="productimg">
+                        <ImageSlider images={product.images} />
+                    </div>
+                    <Input
+                        placeholder={"Menge Angeben"}
+                        onChange={(event)=>onChangeAmount(event, index)}
+                        style={{position:"absolute", right: "0px", top: "300px"}}
+                    >
+                    </Input>
+                </Button>
+            {/* <Card hoverable={true} cover={<ImageSlider images={product.images} />} bordered={true} >
+                <Meta title={product.name} id="productname">
                 </Meta>
-                <p 
-                    className="amount-input"
-                >
-                    Menge: 
+                <Meta title={product.description} id="description">
+>>>>>>> a4468e6edfbf2ab013fc7f41b45922edcad5dc99
+                </Meta>
+                <p className="amount-input">
+                    Menge:
                 </p>
+<<<<<<< HEAD
                 <Input
                     placeholder={"Menge Angeben"}
                     onChange={(event)=>onChangeAmount(event, index)}
@@ -154,44 +166,31 @@ function ProductViewPage(props) {
                 <Switch style={{position:"absolute", right:"40px", top: "50px"}} defaultChecked={(selectedValue[index] == true)} onChange={()=> onSelectedSwitch(index)} />
             </Card>
         </Col>
+=======
+                <Input placeholder={"Menge Angeben"}>
+                </Input>
+                <Switch style={{position:"absolute", right:"40px", top: "50px"}} defaultChecked={selectedValue[index]} onChange={()=> onSelectedSwitch(index)} />
+
+<<<<<<< HEAD
+            </Card> */}
+        {/* </Col> */}
+
     })
 
     return (
         <div className="div-main-title">
             <div className="div-head">
-                <div className="div-title">
+                <div className="title">
                     <h2>Unsere Produkte</h2>
+                    <div id="linie"></div>
                 </div>
             </div>
             <br></br>
-
-
-            {/* Filter  */}
-            {/* <CheckboxFilter
-                handleFilters={filters => handleFilters(filters, "available")}    
-            > 
-
-            </CheckboxFilter>*/}
-            {/* <div>
-                <label>vorhanden</label>
-                <Input
-                    type="checkbox" 
-                    name="available"
-                    onChange={onAvailableChange}
-                    value={availableValue}
-                    defaultChecked
-                >
-                </Input>
-            </div> */}
-
-            {/* Search  */}
-
-
             {products.length === 0 ?
                 <div className="div-no-products">
                     <h2>Produkte werden geladen....</h2>
                 </div> :
-                <div>
+                <div className="div-products">
                     <Row gutter={[16,16]}>
                         {renderCards}
                     </Row>
@@ -199,6 +198,7 @@ function ProductViewPage(props) {
             }
             <br /><br />
             <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+
                 <Button 
                 onClick={()=>onOrderClick()}>
                     Bestellung Aufgeben
