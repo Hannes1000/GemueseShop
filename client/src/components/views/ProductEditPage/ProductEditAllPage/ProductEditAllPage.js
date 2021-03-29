@@ -103,18 +103,22 @@ function ProductEditPage() {
                 bordered={true}
                 style={product.available ? {border:"5px solid darkgreen", borderRadius:"10px", width:"100%"} :{border:"5px solid red", borderRadius:"10px"}}
             >
-                <div style={{display:"flex", flexDirection:"row"}}>
+                <div style={{display:"flex", flexDirection:"column"}}>
                     <Meta
                         title={<Link style={{ textDecoration: 'none', color:"black"}} to={"/product/edit/" + product._id}>{product.name}</Link>}
                         // description={product.description}
                     >
                     </Meta>
-                    <Button style={{position:"absolute", right:"5px", top: "auto", fontSize:"15px", width:"30px", padding:"0px"}} 
+                    <p style={{paddingTop:"20px", marginBottom:"0px"}}>
+                        {"Preis: " + product.price}
+                    </p>
+                    <Button style={{position:"absolute", right:"5px", top: "45px", fontSize:"15px", width:"30px", padding:"0px"}} 
                         onClick={() => onDeleteProduct(products.indexOf(product))}
                     >
                         <Icon type="delete"/>
                     </Button>
-                    <Switch style={{position:"absolute", right:"40px", top: "auto"}} checked={products[products.indexOf(product)].available} onChange={() => onSwitchAvailable(products.indexOf(product)) } />
+                    <Switch style={{position:"absolute", right:"40px", top: "50px"}} checked={products[products.indexOf(product)].available} onChange={() => onSwitchAvailable(products.indexOf(product)) } />
+                    
                 </div>
             </Card>
         </Col>

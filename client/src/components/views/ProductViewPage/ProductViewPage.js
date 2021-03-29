@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Axios from "axios";
 import "./ProductViewPage.css"
-import { Card, Col, Row, Input, Button } from 'antd';
+import { Card, Col, Row, Input, Button, Switch } from 'antd';
 import ImageSlider from "../../utils/ImageSlider"
 import CheckboxFilter from './Sections/CheckboxFilter';
 const {Meta} = Card;
@@ -10,6 +10,7 @@ function ProductViewPage() {
 
     const [products, setProducts] = useState([])
     const [availableValue, setAvailableValue] = useState(true)
+    const [selectedValue, setSelectedValue] = useState([])
 
     useEffect(() =>{
         const variables = {
@@ -23,7 +24,12 @@ function ProductViewPage() {
         .then(response =>{
             if(response.data.success){
                 setProducts(response.data.product)
-                //console.log(response.data.product)
+                let arr = []
+                response.data.product.forEach(product => {
+                    //console.log(product.available)
+                    arr.push(product.available)
+                });
+                setSelectedValue(arr)
             }else{
                 alert("Failed to fetch product data")
             }
@@ -44,15 +50,34 @@ function ProductViewPage() {
         }
     }
 
-    const onCardClick =() =>{
-        console.log("hi")
+    const onSelectedSwitch = (index) =>{
+        console.log(index)
+        let arr = selectedValue;
+        var start_index = 3
+        var number_of_elements_to_remove = 1;
+        console.log(arr[index])
+        var replacement;
+        if(arr[index] == true){
+            replacement = false;
+        }else{
+            replacement = true;
+        }
+        arr.splice(start_index, number_of_elements_to_remove, replacement);
+        console.log(arr)
+        // let arr = []
+        // arr = selectedValue
+        // console.log(arr)
+        // arr.splice(index, 1, !arr.indexOf(index))
+        // console.log(arr.indexOf(index))
+        // setSelectedValue(arr)
+        
     }
+
 
     //lg = largeSize; md = mediumSize; xs = smallSize
     const renderCards = products.map((product, index)=>{
         return <Col lg={6} md={12} xs={24} key={index}>
             <Card
-                onClick={onCardClick}
                 hoverable={true}
                 cover={<ImageSlider images={product.images} />}
                 bordered={true}
@@ -63,8 +88,18 @@ function ProductViewPage() {
                     title={product.name}
                     // description={product.description}
                 >
-
                 </Meta>
+                <p 
+                    className="amount-input"
+                >
+                    Menge: 
+                </p>
+                <Input
+                    placeholder={"Menge Angeben"}
+                >
+                </Input>
+                <Switch style={{position:"absolute", right:"40px", top: "50px"}} defaultChecked={selectedValue[index]} onChange={()=> onSelectedSwitch(index)} />
+                    
             </Card>
         </Col>
     })
@@ -76,6 +111,7 @@ function ProductViewPage() {
                     <h2>Unsere Produkte</h2>
                 </div>
             </div>
+            <br></br>
 
 
             {/* Filter  */}
@@ -107,12 +143,15 @@ function ProductViewPage() {
                     <Row gutter={[16,16]}>
                         {renderCards}
                     </Row>
-
                 </div>
             }
             <br /><br />
-
-
+            <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                <Button 
+                onClick={()=>console.log(selectedValue)}>
+                    Bestellung Aufgeben
+                </Button>
+            </div>
         </div>
     )
 }

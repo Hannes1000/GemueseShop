@@ -14,7 +14,7 @@ var storage = multer.diskStorage({
     },
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname)
-        if p '.jpg' || ext !== '.png') {
+        if (ext !== '.jpg' || ext !== '.png') {
             return cb(res.status(400).end('only jpg, png are allowed'), false);
         }
         cb(null, true)
@@ -50,7 +50,7 @@ router.post("/getProduct", (req, res) => {
 
     let findArgs = req.body.available ? {available: {$eq: available}} : {};
 
-    Product.find()
+    Product.find(findArgs)
         .sort({ "type": 1, "name": 1 })
         .exec((err, product) =>{
             if(err) return res.status(400).json({success: false, err})
