@@ -64,4 +64,14 @@ router.get("/logout", auth, (req, res) => {
     });
 });
 
+router.post("/getUserByID/:id", auth, (req, res) => {
+    //console.log(req.params.id)
+    User.findById(req.params.id)
+    .then(user => {
+        //console.log(user)
+        return res.status(200).json({success: true, user})
+    })
+    .catch(err => res.status(400).json({success: false, err}));
+});
+
 module.exports = router;

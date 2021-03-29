@@ -59,7 +59,7 @@ router.post("/getProduct", (req, res) => {
         })
 });
 
-router.post("/editProduct/available/:id", (req, res) => {
+router.post("/editProduct/available/:id", auth, (req, res) => {
     //console.log(req.body.availabale)
     //console.log(req.params.id)
     Product.findById(req.params.id)
@@ -87,7 +87,6 @@ router.post("/updateProductByID/:id", auth, (req, res) => {
     //console.log(req.body)
     Product.findById(req.params.id)
     .then(product => {
-        console.log(product)
         product.name = req.body.name;
         product.type = req.body.type;
         product.description = req.body.description;
@@ -103,7 +102,7 @@ router.post("/updateProductByID/:id", auth, (req, res) => {
     .catch(err => res.status(400).json({success: false, err}));
 });
 
-router.delete("/deleteProduct/:id", (req, res) => {
+router.delete("/deleteProduct/:id", auth, (req, res) => {
     Product.findByIdAndDelete(req.params.id)
     .then(() => res.json({success: true}))
     .catch(err => res.status(400).json({success: false, err}));
