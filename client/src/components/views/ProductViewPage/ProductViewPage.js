@@ -83,7 +83,8 @@ function ProductViewPage(props) {
         let arrAmount = [];
         for(let i = 0; i < products.length; i++){
             if(selectedValue[i] == true && amountValue[i] != "0" && amountValue[i] != ""){
-                arrSelectedProducts.push(products[i]._id)
+                //arrSelectedProducts.push(products[i]._id)
+                arrSelectedProducts.push(products[i])
                 arrAmount.push(amountValue[i])
             }
         }
