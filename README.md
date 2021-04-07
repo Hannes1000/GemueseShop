@@ -1,7 +1,7 @@
 # GemüseShop
 
 # Ausführen des Programmes:
-- das Hauptprogramm befindet sich auf dem neuem Branch
+- das Hauptprogramm befindet sich auf dem neuen Branch
 - Python muss installiert sein
 - im Hauptordner npm install 
 - im client ordner npm install
