@@ -104,7 +104,7 @@ export default function ContactUs(props) {
           <div id="telefon">
             <Input type="text" placeholder="Telefonnummer" name="from_tel" value={telefonnumber}/>
           </div>
-          <div id="email">
+          <div id="emailsend">
             <Input type="text" placeholder="E-Mail" name="from_email" value={email}/>
           </div>
           <div id="bestellung">
