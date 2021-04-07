@@ -135,7 +135,7 @@ function ProductViewPage(props) {
                     <div id="productname">
                         {product.name}
                     </div>
-                    <Switch style={{position:"absolute", right:"10px", top: "10px"}} defaultChecked={(selectedValue[index] == true)} onChange={()=> onSelectedSwitch(index)} />
+                    <Switch style={{position:"absolute", right:"10px", bottom: "10px"}} defaultChecked={(selectedValue[index] == true)} onChange={()=> onSelectedSwitch(index)} />
                     <div id="description">
                         {product.description}
                     </div>
@@ -198,10 +198,9 @@ function ProductViewPage(props) {
                 </div>
             }
             <br /><br />
-            <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: "50px"}}>
 
-                <Button 
-                onClick={()=>onOrderClick()}>
+                <Button onClick={()=>onOrderClick()}>
                     Bestellung Aufgeben
                 </Button>
             </div>

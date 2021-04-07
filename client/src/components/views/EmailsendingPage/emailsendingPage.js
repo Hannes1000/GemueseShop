@@ -32,6 +32,7 @@ export default function ContactUs(props) {
     emailjs.sendForm('service_557c2xm', 'template_xbg7wrw', e.target, 'user_sHvuknvtV0sHVEGaQecVc')
       .then((result) => {
           console.log(result.text);
+          props.history.push("/");
       }, (error) => {
           console.log(error.text);
       });
@@ -66,6 +67,7 @@ export default function ContactUs(props) {
                   orderstr += response.data.order.products[i].name + ": "
                   orderstr += response.data.order.menge[i] + "\n"
                 }
+                console.log(orderstr)
                 setOrderString(orderstr)
                 //orderstr += response.data.order.products[1].name
                 //console.log(response.data.order.products[1].name)
@@ -99,10 +101,10 @@ export default function ContactUs(props) {
           <div id="name">
             <Input type="text" placeholder="Name" name="from_name" value={name}/>
           </div>
-          <div id="name">
+          <div id="telefon">
             <Input type="text" placeholder="Telefonnummer" name="from_tel" value={telefonnumber}/>
           </div>
-          <div id="name">
+          <div id="email">
             <Input type="text" placeholder="E-Mail" name="from_email" value={email}/>
           </div>
           <div id="bestellung">

@@ -68,6 +68,30 @@
     height: 39px;
 }
 
+#telefon{
+    position: absolute;
+    
+    left: 431px;
+    top: 20px;
+}
+
+#telefon input{
+    width: 265px;
+    height: 39px;
+}
+
+#email{
+    position: absolute;
+    left: 806px;
+    top: 20px;
+
+}
+
+#email input{
+    width: 265px;
+    height: 39px;
+}
+
 #bestellung{
     position: absolute;
     
@@ -106,7 +130,19 @@
 
 @media (max-width: 767px) {
 
+    #telefon{
+        position: absolute;
+    
+        left: 56px;
+        top: 83px;
+    }
 
+    #email{
+        position: absolute;
+    
+        left: 56px;
+        top: 146px;
+    }
 
     #bestellungtext{
         position: absolute;
@@ -148,10 +184,12 @@
     }
 
     #bestellung textarea{
+        position: absolute;
+        top:130px;
         min-width: 370px;
-        min-height: 450px;
+        min-height: 300px;
         max-width: 370px;
-        max-height: 450px;
+        max-height: 300px;
     }
 
     #submit{
