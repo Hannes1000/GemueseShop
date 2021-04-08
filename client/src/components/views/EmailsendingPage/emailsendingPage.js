@@ -11,15 +11,14 @@ export default function ContactUs(props) {
   const [name, setName] = useState()
   const [telefonnumber, setTelefonnumber] = useState()
   const [email, setEmail] = useState()
+  
 
   function sendEmail(e) {
     e.preventDefault();
 
     // let ergstr = "Name: " + name + "<br>Telefonnummer: " + telefonnumber + "<br>E-Mail: " + email + "<br>"
 
-    let str = orderString
-    str.replaceAll(/\n/g, "<br>")
-    setOrderString(str)
+    document.getElementById("bestellungform").value = window.name
     //console.log(str)
     // ergstr += str
     // //console.log(ergstr)
@@ -62,12 +61,17 @@ export default function ContactUs(props) {
                     }
                 })
                 let orderstr = ""
+                let teststring = ""
+
                 for(let i = 0; i < response.data.order.products.length; i++){
                   //orderstr += response.data.order.products[i].name + "/n"
                   orderstr += response.data.order.products[i].name + ": "
                   orderstr += response.data.order.menge[i] + "\n"
+                  teststring += response.data.order.products[i].name + ": "
+                  teststring += response.data.order.menge[i] + "<br>"
                 }
                 console.log(orderstr)
+                window.name = teststring
                 setOrderString(orderstr)
                 //orderstr += response.data.order.products[1].name
                 //console.log(response.data.order.products[1].name)
@@ -108,7 +112,7 @@ export default function ContactUs(props) {
             <Input type="text" placeholder="E-Mail" name="from_email" value={email}/>
           </div>
           <div id="bestellung">
-            <textarea placeholder="Bestellung" name="message" value={orderString} onChange={onOrderChange}/>
+            <textarea id="bestellungform" readOnly placeholder="Bestellung" name="message" value={orderString} onChange={onOrderChange}/>
           </div>
           <div id="submit">
             <Input type="submit" value="Send" />
