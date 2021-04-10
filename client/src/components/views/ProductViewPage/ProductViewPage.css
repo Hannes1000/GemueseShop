@@ -31,9 +31,10 @@
 .productcard {
     padding:0;
     width: 300px;
-    height: 380px;
-    background: rgba(39, 125, 25, 0.60);
+    height: 300px;
+    background: rgba(38, 125, 25, 0.329);
     margin: 20px;
+    border-radius: 10px 10px 0px 0px;
 }
 .productcard:hover{
     background: rgba(39, 125, 25, 0.40); 
@@ -69,7 +70,7 @@
     width: 308px;
     height: 20px;
     left: 16px;
-    bottom: 120px;
+    top: 210px;
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
@@ -83,6 +84,17 @@
 .amount-input{
     margin-top: 20px;
     margin-bottom: 0px;
+}
+
+.input-amount{
+    border-radius: 0px 0px 0px 10px;
+    width: 75%;
+}
+
+.select-which{
+    border-radius: 0px 0px 10px 0px;
+    width: 25%;
+    height: 32px;
 }
 
 @media (max-width: 767px) {
