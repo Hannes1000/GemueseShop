@@ -74,4 +74,24 @@ router.post("/getUserByID/:id", auth, (req, res) => {
     .catch(err => res.status(400).json({success: false, err}));
 });
 
+router.post("/setUserByID/:id", auth, (req, res) => {
+    User.findById(req.params.id)
+    .then(user => {
+        user.role = req.body.role;
+        user.save((err) =>{
+            if(err) return res.status(400).json({success: false, err})
+            return res.status(200).json({success: true})
+        })
+    })
+});
+
+router.post("/getAllUsers", auth, (req, res) => {
+    console.log("get")
+    User.find()
+        .exec((err, users) =>{
+            if(err) return res.status(400).json({success: false, err})
+            res.status(200).json({success: true, users})
+        })
+});
+
 module.exports = router;

@@ -141,7 +141,7 @@ function ProductViewPage(props) {
             if(response.data.success){
                 props.history.push("/order/email/" + response.data.order)
             }else{
-                alert("Failed to fetch product data")
+                props.history.push("/login")
             }
         })
     }

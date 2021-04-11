@@ -33,6 +33,9 @@ function LeftMenu(props) {
         <Menu.Item key="edit-product">
           <a href="/product/edit">Bearbeiten</a>
         </Menu.Item>
+        <Menu.Item key="user-manage">
+          <a href="/users/manage">User</a>
+        </Menu.Item>
       </Menu>
     )
   }else {

@@ -12,6 +12,7 @@ import ProductViewPage from "./views/ProductViewPage/ProductViewPage"
 import ProductEditAllPage from "./views/ProductEditPage/ProductEditAllPage/ProductEditAllPage"
 import ProductEditPage from "./views/ProductEditPage/ProductEditPage"
 import EmailSendingPage from "./views/EmailsendingPage/emailsendingPage"
+import UserManagePage from "./views/UserManagePage/UserManagePage"
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/product/edit" component={Auth(ProductEditAllPage, true, true)} />
           <Route exact path="/product/edit/:id" component={Auth(ProductEditPage, true, true)} />
           <Route exact path="/order/email/:id" component={Auth(EmailSendingPage, true, false)} />
+          <Route exact path="/users/manage" component={Auth(UserManagePage, true, true)} />
         </Switch>
       </div>
       {/* <Footer /> */}

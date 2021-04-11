@@ -19,7 +19,7 @@ function LoginPage(props) {
     setRememberMe(!rememberMe)
   };
 
-  const initialEmail = localStorage.getItem("rememberMe") ? localStorage.getItem("rememberMe") : '';
+  const initialEmail = ''//localStorage.getItem("rememberMe") ? localStorage.getItem("rememberMe") : '';
 
   return (
     <Formik
@@ -45,6 +45,7 @@ function LoginPage(props) {
           dispatch(loginUser(dataToSubmit))
             .then(response => {
               if (response.payload.loginSuccess) {
+                //console.log(response)
                 window.localStorage.setItem('userId', response.payload.userId);
                 if (rememberMe === true) {
                   window.localStorage.setItem('rememberMe', values.id);
